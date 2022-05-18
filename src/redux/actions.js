@@ -52,6 +52,8 @@ export const fetchData = () => {
     try {
       dispatch(getRates());
       dispatch(getCurrencies());
+      axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+      axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
       const [{ data: rates }, { data: currencies }] = await axios.all([
         axios.get(Const.ratesAPI),
         axios.get(Const.currenciesAPI),
